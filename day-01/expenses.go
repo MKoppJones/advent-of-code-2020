@@ -24,27 +24,38 @@ func readExpenses() []int {
 	return expenses
 }
 
-func main() {
-	expenses := readExpenses()
-	value1 := 0
-	value2 := 0
-	found := false
+func findValues(count int, goal int, items []int) []int {
+	arr := make([]int, count)
+	return iterateValues(0, count, goal, items, arr)
+}
 
-	for _, element := range expenses {
-		value1 = element
-
-		for _, element2 := range expenses {
-			value2 = element2
-			found = (value1+value2 == 2020)
-
-			if found {
-				break
-			}
+func iterateValues(curr int, max int, goal int, items []int, result []int) []int {
+	for _, element := range items {
+		result[curr] = element
+		if curr < max-1 {
+			result = iterateValues(curr+1, max, goal, items, result)
 		}
-
-		if found {
+		total := 0
+		for _, i := range result {
+			total += i
+		}
+		if total == goal {
 			break
 		}
 	}
-	println(value1 * value2)
+	return result
+}
+
+func multi(values []int) int {
+	total := 1
+	for _, i := range values {
+		total = total * i
+	}
+	return total
+}
+
+func main() {
+	expenses := readExpenses()
+	println(multi(findValues(2, 2020, expenses)))
+	println(multi(findValues(3, 2020, expenses)))
 }
