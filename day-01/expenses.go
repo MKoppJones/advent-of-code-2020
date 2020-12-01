@@ -1,27 +1,32 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
 )
 
-func readExpenses() []int {
+func readExpenses() ([]int, error) {
 	expenses := []int{}
 
-	bytesRead, _ := ioutil.ReadFile("expenses.txt")
+	bytesRead, readFileErr := ioutil.ReadFile("expenses.txt")
+	if readFileErr != nil {
+		println(readFileErr)
+		return []int{}, readFileErr
+	}
 	fileContent := string(bytesRead)
 	lines := strings.Split(fileContent, "\n")
 	lines = lines[:len(lines)-1]
 
 	for _, i := range lines {
-		j, err := strconv.Atoi(i)
-		if err != nil {
-			panic(err)
+		j, atoiError := strconv.Atoi(i)
+		if atoiError != nil {
+			return []int{}, atoiError
 		}
 		expenses = append(expenses, j)
 	}
-	return expenses
+	return expenses, nil
 }
 
 func findValues(count int, goal int, items []int) []int {
@@ -55,7 +60,12 @@ func multi(values []int) int {
 }
 
 func main() {
-	expenses := readExpenses()
-	println(multi(findValues(2, 2020, expenses)))
-	println(multi(findValues(3, 2020, expenses)))
+	expenses, err := readExpenses()
+	if err != nil {
+		println(err)
+		return
+	}
+	part1 := multi(findValues(2, 2020, expenses))
+	part2 := multi(findValues(3, 2020, expenses))
+	fmt.Printf("Day 01\nPart 1:\t%d\nPart 2:\t%d", part1, part2)
 }
