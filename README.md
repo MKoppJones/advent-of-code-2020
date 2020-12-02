@@ -12,3 +12,9 @@ Run all scripts with
 ```
 bash run.sh
 ```
+
+## My Learnings
+
+I've decided to make notes on all the gotchas and quirks I've learnt while working through Advent of Code 2020.
+
+Find them [here](LEARNINGS.md)
