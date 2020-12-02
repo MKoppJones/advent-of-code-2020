@@ -3,17 +3,17 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
 
-func readPasswordPolicies() ([]string, error) {
+func readPasswordPolicies(path string) ([]string, error) {
 	policies := []string{}
-
-	bytesRead, readFileErr := ioutil.ReadFile("passwords.txt")
+	bytesRead, readFileErr := ioutil.ReadFile(path)
 	if readFileErr != nil {
 		println(readFileErr)
-		return []string{}, readFileErr
+		return nil, readFileErr
 	}
 	fileContent := string(bytesRead)
 	lines := strings.Split(fileContent, "\n")
@@ -68,7 +68,8 @@ func newPasswordPolicy(policyParts []string) bool {
 }
 
 func main() {
-	passwords, readErr := readPasswordPolicies()
+	args := os.Args[1:]
+	passwords, readErr := readPasswordPolicies(args[0])
 	if readErr != nil {
 		println(readErr)
 		return
@@ -85,5 +86,5 @@ func main() {
 			newValidPasswords++
 		}
 	}
-	fmt.Printf("Day 02\nPart 1:\t%d\nPart 2:\t%d", oldValidPasswords, newValidPasswords)
+	fmt.Printf("Day 02 - Password Philosophy\nPart 1:\t%d\nPart 2:\t%d\n\n", oldValidPasswords, newValidPasswords)
 }

@@ -2,3 +2,4 @@
 
 1. [Day 01](day-01) - Report Repair
 2. [Day 02](day-02) - Password Philosophy
+3. [Day 03](day-03) - ...
