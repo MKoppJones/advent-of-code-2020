@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
@@ -20,6 +21,52 @@ func readPasswordPolicies() ([]string, error) {
 	return policies, nil
 }
 
+func oldPasswordPolicy(policyParts []string) bool {
+	password := policyParts[2]
+	letter := strings.TrimRight(policyParts[1], ":")
+	counts := strings.Split(policyParts[0], "-")
+	min, minError := strconv.Atoi(counts[0])
+	if minError != nil {
+		println(minError)
+		return false
+	}
+	max, maxError := strconv.Atoi(counts[1])
+	if maxError != nil {
+		println(maxError)
+		return false
+	}
+
+	letterCount := strings.Count(password, letter)
+	return letterCount >= min && letterCount <= max
+}
+
+func newPasswordPolicy(policyParts []string) bool {
+	password := policyParts[2]
+	letter := strings.TrimRight(policyParts[1], ":")
+	counts := strings.Split(policyParts[0], "-")
+	positionOne, posOneError := strconv.Atoi(counts[0])
+	if posOneError != nil {
+		println(posOneError)
+		return false
+	}
+	positionTwo, posTwoError := strconv.Atoi(counts[1])
+	if posTwoError != nil {
+		println(posTwoError)
+		return false
+	}
+
+	posOneCheck := false
+	if positionOne-1 < len(password) {
+		posOneCheck = string(password[positionOne-1]) == letter
+	}
+
+	posTwoCheck := false
+	if positionTwo-1 < len(password) {
+		posTwoCheck = string(password[positionTwo-1]) == letter
+	}
+	return posOneCheck != posTwoCheck
+}
+
 func main() {
 	passwords, readErr := readPasswordPolicies()
 	if readErr != nil {
@@ -27,27 +74,16 @@ func main() {
 		return
 	}
 
-	validPasswords := 0
+	oldValidPasswords := 0
+	newValidPasswords := 0
 	for _, policy := range passwords {
-		splitPolicy := strings.Split(policy, " ")
-		password := splitPolicy[2]
-		letter := strings.TrimRight(splitPolicy[1], ":")
-		counts := strings.Split(splitPolicy[0], "-")
-		min, minError := strconv.Atoi(counts[0])
-		if minError != nil {
-			println(minError)
-			return
+		policyParts := strings.Split(policy, " ")
+		if oldPasswordPolicy(policyParts) {
+			oldValidPasswords++
 		}
-		max, maxError := strconv.Atoi(counts[1])
-		if maxError != nil {
-			println(maxError)
-			return
-		}
-
-		letterCount := strings.Count(password, letter)
-		if letterCount >= min && letterCount <= max {
-			validPasswords++
+		if newPasswordPolicy(policyParts) {
+			newValidPasswords++
 		}
 	}
-	println(validPasswords)
+	fmt.Printf("Day 02\nPart 1:\t%d\nPart 2:\t%d", oldValidPasswords, newValidPasswords)
 }
