@@ -6,6 +6,7 @@
 2. [Day 02](day-02) - Password Philosophy
 3. [Day 03](day-03) - Toboggan Trajectory
 4. [Day 04](day-04) - Passport Processing
+5. [Day 05](day-05) - Binary Boarding
 
 ## Run 'em all
 

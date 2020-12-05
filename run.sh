@@ -11,3 +11,6 @@ go run day-03/toboggan.go day-03/treeMap.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-04/passports.go day-04/input.txt 
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-05/binary.go day-05/input.txt 
