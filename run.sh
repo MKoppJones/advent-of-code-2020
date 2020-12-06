@@ -14,3 +14,6 @@ go run day-04/passports.go day-04/input.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-05/binary.go day-05/input.txt 
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-06/customs.go day-06/input.txt 
