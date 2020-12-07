@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// BagCount holds a bag type and its count
 type BagCount struct {
 	count int
 	bag   string

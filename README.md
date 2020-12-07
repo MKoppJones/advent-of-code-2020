@@ -8,6 +8,7 @@
 4. [Day 04](day-04) - Passport Processing
 5. [Day 05](day-05) - Binary Boarding
 6. [Day 06](day-06) - Custom Customs
+7. [Day 07](day-07) - Handy Haversacks
 
 ## Run 'em all
 
