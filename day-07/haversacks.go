@@ -44,16 +44,15 @@ func crawlCanHold(bagMap map[string][]string, bag string, validBags map[string]i
 	return validBags
 }
 
-func crawlHolds(bagMap map[string][]BagCount, bag string, validBags map[BagCount]int) map[BagCount]int {
+func crawlHolds(bagMap map[string][]BagCount, bag string) int {
+	c := 0
 	for _, bagCount := range bagMap[bag] {
-		_, exists := validBags[bagCount]
-		if !exists {
-			validBags[bagCount] = 0
+		if bagCount.bag != "other bags" {
+			c += bagCount.count
+			c += crawlHolds(bagMap, bagCount.bag) * bagCount.count
 		}
-		validBags[bagCount]++
-		validBags = crawlHolds(bagMap, bagCount.bag)
 	}
-	return validBags
+	return c
 }
 
 func main() {
@@ -85,7 +84,7 @@ func main() {
 	}
 
 	canHoldShinyGold := len(crawlCanHold(bagMap, "shiny gold", map[string]int{}))
-	maxHold := len(crawlHolds(countedBagMap, "shiny gold", map[BagCount]int{}))
+	maxHold := crawlHolds(countedBagMap, "shiny gold")
 
 	fmt.Printf("Day 07 - Handy Haversacks\nPart 1:\t%d\nPart 2:\t%d\n\n", canHoldShinyGold, maxHold)
 }
