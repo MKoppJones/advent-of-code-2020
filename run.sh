@@ -20,3 +20,6 @@ go run day-06/customs.go day-06/input.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-07/haversacks.go day-07/input.txt
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-08/halting.go day-08/input.txt

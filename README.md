@@ -9,6 +9,7 @@
 5. [Day 05](day-05) - Binary Boarding
 6. [Day 06](day-06) - Custom Customs
 7. [Day 07](day-07) - Handy Haversacks
+8. [Day 08](day-08) - Handheld Halting
 
 ## Run 'em all
 
