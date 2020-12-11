@@ -29,3 +29,6 @@ go run day-09/encoding.go day-09/input.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-10/adapter.go day-10/input.txt
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-11/seating.go day-11/input.txt
