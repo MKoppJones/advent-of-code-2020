@@ -32,3 +32,6 @@ go run day-10/adapter.go day-10/input.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-11/seating.go day-11/input.txt
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-12/rain.go day-12/input.txt

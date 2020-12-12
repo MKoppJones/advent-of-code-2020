@@ -13,6 +13,7 @@
 9.  [Day 09](day-09) - Encoding Error
 10. [Day 10](day-10) - Adapter Array
 11. [Day 11](day-11) - Seating System
+12. [Day 12](day-12) - Rain Risk
 
 ## Run 'em all
 
