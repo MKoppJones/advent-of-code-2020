@@ -35,3 +35,6 @@ go run day-11/seating.go day-11/input.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-12/rain.go day-12/input.txt
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-13/shuttle.go day-13/input.txt

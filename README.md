@@ -14,6 +14,7 @@
 10. [Day 10](day-10) - Adapter Array
 11. [Day 11](day-11) - Seating System
 12. [Day 12](day-12) - Rain Risk
+13. [Day 13](day-13) - Shuttle Search
 
 ## Run 'em all
 
