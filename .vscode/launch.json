@@ -9,9 +9,9 @@
       "type": "go",
       "request": "launch",
       "mode": "auto",
-      "program": "${workspaceRoot}/day-13",
+      "program": "${workspaceRoot}/day-14",
       "env": {},
-      "args": ["${workspaceRoot}/day-13/input.txt"]
+      "args": ["${workspaceRoot}/day-14/input.txt"]
     }
   ]
 }
