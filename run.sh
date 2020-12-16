@@ -44,3 +44,6 @@ go run day-14/docking.go day-14/input.txt
 
 echo ~~~~~~~~~~~~~~~~~~~
 go run day-15/rambunctious.go day-15/input.txt
+
+echo ~~~~~~~~~~~~~~~~~~~
+go run day-16/ticket.go day-15/input.txt
