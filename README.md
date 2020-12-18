@@ -18,6 +18,7 @@
 14. [Day 14](day-14) - Docking Data
 15. [Day 15](day-15) - Rambunctious Recitation
 16. [Day 16](day-16) - Ticket Translation
+16. [Day 17](day-17) - Conway Cubes
 
 ## Run 'em all
 
